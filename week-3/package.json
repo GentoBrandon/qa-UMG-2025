@@ -1,0 +1,14 @@
+{
+  "name": "week-3",
+  "version": "1.0.0",
+  "description": "testing for week 3",
+  "main": "index.js",
+  "scripts": {
+    "test": "vitest"
+  },
+  "author": "Brandon",
+  "license": "ISC",
+  "devDependencies": {
+    "vitest": "^3.2.4"
+  }
+}
