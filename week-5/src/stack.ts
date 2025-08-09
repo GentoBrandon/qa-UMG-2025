@@ -7,6 +7,7 @@ export function balancedBrackets(str) {
         '{': '}',
         '[': ']'
     };
+    console.log(str);
     let lastOpeningBracket: string;
     for (const char of str){
         if (openingBrackets.includes(char)){
