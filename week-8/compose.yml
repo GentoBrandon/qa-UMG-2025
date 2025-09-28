@@ -38,9 +38,7 @@ services:
       - DB_USERNAME=umg_test
       - DB_PASSWORD=test
       - DB_DATABASE=postgres
-    volumes:
-      - ./week-8:/week-8
-      - /week-8/node_modules
+    
   
 
       
