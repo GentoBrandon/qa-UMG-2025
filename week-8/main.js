@@ -1,20 +1,29 @@
-const express = require('express')
+import express from 'express'
 const app = express()
-const port = 8001
-const pgp = require('pg-promise')(/* options */)
+const port = 8000
+import productRouter from './routes/route.js'
+import dotenv from 'dotenv'
+dotenv.config()
 
-const db = pgp(process.env.DATABASE_URL)
+import { initializeDatabase } from './config/db.js'
+
+
+app.use(express.json())
 
 app.get('/', (req, res) => {
   res.send('Hello World!')
 })
 
-db.connect().then(() => {
-  console.log('Database connected')
-}).catch((err) => {
-  console.log('Database not connected', err)
-})
-
-app.listen(port, () => {
-  console.log(`Example app listening on port ${port}`)
-})
+app.use('/api', productRouter)
+initializeDatabase()
+  .then(() => {
+    app.listen(port,  () => {
+      console.log(`Server running on http://localhost:${port}`);
+    });
+  })
+  .catch((error) => {
+    console.error('Error initializing the database:', error);
+    app.listen(port,  () => {
+      console.log(`Server running (without DB) on http://localhost:${port}`);
+    });
+  });
