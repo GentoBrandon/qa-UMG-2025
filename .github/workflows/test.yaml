@@ -18,7 +18,7 @@ jobs:
           node-version: '20'
 
       -name: Install dependencies
-        run: cd week-5 && npm install
+        run: cd week-8 && npm install
 
-      -name: Run tests
-        run: cd week-5 && npm run test
+      -name: Run tests in week-8
+        run: cd week-8 && npm run test
