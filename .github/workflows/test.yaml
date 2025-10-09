@@ -22,10 +22,15 @@ jobs:
 
       - name: Initialize DB
         run: cd week-8 && docker compose up -d
-      
+
+      - name: Charge .env file
+        run: |
+          cd week-8
+          echo DATABASE_URL="postgresql://umg_test:test@localhost:5432/postgres" >> .env
+          
       - name: Run Migration
         run: cd week-8 && npm run prisma:migrate
-        
+
       - name: Generate Prisma Client
         run: cd week-8 && npm run prisma:generate
         
