@@ -54,7 +54,7 @@ export const updateProductController = async (req, res) => {
     res.status(200).json(product);
   } catch (error) {
     if (error.code === 'P2025') {
-      return res.status(404).json({ error: "Product not found" });
+      return res.status(404).json({ error: "Product not found or already deleted" });
     }
     res.status(500).json({ error: error.message });
   }
